@@ -160,7 +160,6 @@ body{
     background: linear-gradient(to right, #E7BE63, #B69231);
     color: black;
     font-weight: 500;
-    padding: 0.75rem 1.5rem;
     box-shadow: 0 0 12px rgba(233, 155, 99, 0.6);
     transition: all 0.3s ease;
 }

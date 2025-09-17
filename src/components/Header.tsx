@@ -56,17 +56,6 @@ export default function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-12">
-                {/*{navItems.map((item, i) => (*/}
-                {/*    <a*/}
-                {/*        key={i}*/}
-                {/*        href="#"*/}
-                {/*        className="uppercase text-base tracking-wider transition-colors hover:text-gray-300 z-50"*/}
-                {/*    >*/}
-                {/*        {item}*/}
-                {/*    </a>*/}
-                {/*))}*/}
-
-
                 {navItems.map((item) => (
                     <Link
                         key={item}
@@ -74,12 +63,12 @@ export default function Header() {
                         smooth={true}
                         duration={600}
                         offset={-80}
-                        className="uppercase cursor-pointer text-base tracking-wider transition-colors hover:text-[#B69231] z-50"
+                        className="relative uppercase cursor-pointer text-base tracking-wider text-white transition-colors hover:text-[#B69231] z-50
+                 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#B69231] after:transition-all after:duration-300 hover:after:w-full"
                     >
                         {item}
                     </Link>
                 ))}
-
             </nav>
 
             {/* Desktop Button */}

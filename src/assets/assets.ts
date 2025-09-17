@@ -1,6 +1,7 @@
 import logo from './logo/logo.webp'
 import gradientbg from './gradient.webp'
 import about from "./About/about.webp"
+import chatbot from './hero/chatbot.gif'
 
 import partner1 from "./partners/clear_choice.png"
 import partner2 from "./partners/drucker_logo.png"
@@ -26,6 +27,7 @@ import video from './invesment/video.mp4'
 export const assets: { [key: string]: string } = {
     logo,
     gradientbg,
+    chatbot,
     about,
     partner1,
     partner2,

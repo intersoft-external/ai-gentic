@@ -108,7 +108,7 @@ export default function Footer({
                                     />
                                     <button
                                         type="submit"
-                                        className=" rounded-r-xl btn"
+                                        className="rounded-r-xl btn py-[0.75rem] px-[1.2rem]"
                                     >
                                         Subscribe
                                     </button>
