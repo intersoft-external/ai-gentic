@@ -10,7 +10,7 @@ const Hero = () => {
             id="hero"
             className="relative w-full min-h-[50vh] md:min-h-[90vh] flex items-center overflow-hidden pt-24 md:pt-20"
         >
-            <div className="relative z-10 grid grid-cols-12 gap-8 w-full max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div className="relative z-10 grid grid-cols-12 gap-8 w-full max-w-7xl mx-auto px-1 lg:px-12">
                 {/* Left section */}
                 <div className="col-span-12 md:col-span-6 flex flex-col justify-center text-left pt-10 sm:pt-14 px-4 sm:px-6 md:px-0">
                     {/* Badge */}
