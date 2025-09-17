@@ -1,10 +1,16 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
 
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
+
+@custom-variant dark (&:is(.dark *));
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -142,52 +148,70 @@ body{
     transform: rotateY(180deg);
 }
 
+
+/*text*/
+.text{
+    color:#F4F6F8;
+}
 /*button*/
 .btn {
-    background-color: #ffffff; /* bg-white/20 */
+    background: linear-gradient(135deg, #B69231, #e6b345);
     border: none;
-    color: black; /* text-white */
-    font-weight: 500; /* font-medium */
-    backdrop-filter: blur(4px); /* backdrop-blur-sm */
-    transition: all 0.5s ease; /* transition-all duration-500 */
+    color: black;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    transition: all 0.5s ease;
     cursor: pointer;
-}
-.btn:hover {
-    background-color: #f6f2f2;
-}
-
-.btn2 {
-    /*padding: 0.25rem 0.75rem;*/
-    font-size: 0.75rem; /* text-xs */
-    line-height: 1rem; /* text-xs */
-    font-weight: 500; /* font-medium */
-
-    border: none;
-    color: #fff; /* Tailwind text-white default color */
-    background-image: linear-gradient(to right, #6366f1, #9333ea); /* bg-gradient-to-r from-indigo-500 to-purple-600 */
-    transition: opacity 0.15s ease-in-out; /* transition (default duration) */
-    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Hover effect for the button */
-.btn2:hover {
-    opacity: 0.9; /* hover:opacity-90 */
+/* Glassy Hover Effect */
+.btn::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(25deg);
+    transition: all 0.6s ease;
+    opacity: 0;
 }
+
+.btn:hover::after {
+    top: 0;
+    left: 0;
+    opacity: 1;
+}
+
 
 
 .heading {
-    font-weight: 600;        /* font-semibold */
-    letter-spacing: 0.05em;  /* tracking-wide */
-    line-height: 1.25;       /* leading-tight */
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1.25;
+    color: #F4F6F8;
 }
 
 /* Gradient text */
 .gradient-text {
-    background: linear-gradient(to right, #818cf8, #a855f7, #ec4899);
+    background: #B69231;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
 }
 
+/*icon*/
+.icon {
+    background: linear-gradient(to bottom right, #B69231, #e6b345);
+    color:#F4F6F8;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth hover */
+}
 
+.group:hover .icon {
+    transform: scale(1.1);
+}

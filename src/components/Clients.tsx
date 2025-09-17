@@ -1,5 +1,8 @@
-import Slider from "react-slick";
+"use client";
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
 import { assets } from "../assets/assets.ts";
 
 export default function Clients() {
@@ -14,26 +17,6 @@ export default function Clients() {
         assets.partner8,
     ];
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        autoplay: true,
-        autoplaySpeed: 0,
-        speed: 5000,
-        cssEase: "linear",
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        arrows: false,
-        pauseOnHover: false,
-        pauseOnFocus: false,
-        responsive: [
-            { breakpoint: 1280, settings: { slidesToShow: 5 } },
-            { breakpoint: 1024, settings: { slidesToShow: 4 } },
-            { breakpoint: 768, settings: { slidesToShow: 3 } },
-            { breakpoint: 480, settings: { slidesToShow: 2 } },
-        ],
-    };
-
     return (
         <section className="relative py-12 md:py-16 overflow-hidden">
             <div className="px-6 md:px-12 max-w-7xl mx-auto">
@@ -45,10 +28,8 @@ export default function Clients() {
                         transition={{ duration: 0.7, ease: "easeOut" }}
                         viewport={{ once: true }}
                     >
-                        The most <b className="font-semibold">innovative</b> financial leaders trust{" "}
-                        <b className="font-semibold">AiGentic</b>
-                        <br />
-                        To power intelligence in the markets
+                        The <b className="font-semibold">smartest</b> financial leaders trust{" "}
+                        <b className="font-semibold">AiGentic</b> to power <br /> market intelligence.
                     </motion.h2>
 
                     <motion.div
@@ -59,33 +40,50 @@ export default function Clients() {
                         variants={{
                             hidden: {},
                             visible: {
-                                transition: { staggerChildren: 0.15 }
-                            }
+                                transition: { staggerChildren: 0.15 },
+                            },
                         }}
                     >
                         {/* Fading edges */}
                         <div className="pointer-events-none absolute top-0 left-0 h-full w-20 bg-gradient-to-r from-black to-transparent z-10"></div>
                         <div className="pointer-events-none absolute top-0 right-0 h-full w-20 bg-gradient-to-l from-black to-transparent z-10"></div>
 
-                        <Slider {...settings}>
+                        <Swiper
+                            modules={[Autoplay]}
+                            slidesPerView={6}
+                            spaceBetween={30}
+                            loop={true}
+                            speed={5000}
+                            autoplay={{
+                                delay: 0,
+                                disableOnInteraction: false,
+                            }}
+                            breakpoints={{
+                                1280: { slidesPerView: 5 },
+                                1024: { slidesPerView: 4 },
+                                768: { slidesPerView: 3 },
+                                480: { slidesPerView: 2 },
+                            }}
+                        >
                             {logos.map((logo, i) => (
-                                <motion.div
-                                    key={i}
-                                    className="flex items-center justify-center"
-                                    variants={{
-                                        hidden: { opacity: 0, scale: 0.9 },
-                                        visible: { opacity: 1, scale: 1 }
-                                    }}
-                                    transition={{ duration: 0.5, ease: "easeOut" }}
-                                >
-                                    <img
-                                        src={logo}
-                                        alt={`logo-${i}`}
-                                        className="max-h-10 object-contain invert brightness-100 hover:scale-105 transition-transform"
-                                    />
-                                </motion.div>
+                                <SwiperSlide key={i}>
+                                    <motion.div
+                                        className="flex items-center justify-center"
+                                        variants={{
+                                            hidden: { opacity: 0, scale: 0.9 },
+                                            visible: { opacity: 1, scale: 1 },
+                                        }}
+                                        transition={{ duration: 0.5, ease: "easeOut" }}
+                                    >
+                                        <img
+                                            src={logo}
+                                            alt={`logo-${i}`}
+                                            className="max-h-10 object-contain invert brightness-100 hover:scale-105 transition-transform"
+                                        />
+                                    </motion.div>
+                                </SwiperSlide>
                             ))}
-                        </Slider>
+                        </Swiper>
                     </motion.div>
 
                     <motion.div

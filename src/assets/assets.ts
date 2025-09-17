@@ -1,6 +1,6 @@
-import logo from './logo/logo.png'
-import gradientbg from './gradient.png'
-import about from "./About/about.jpg"
+import logo from './logo/logo.webp'
+import gradientbg from './gradient.webp'
+import about from "./About/about.webp"
 
 import partner1 from "./partners/clear_choice.png"
 import partner2 from "./partners/drucker_logo.png"
@@ -20,6 +20,9 @@ import team1 from './team/teammember1.png'
 import team2 from './team/teammember2.png'
 import team3 from './team/teammember3.png'
 import team4 from './team/teammember4.png'
+
+//inverstment
+import video from './invesment/video.mp4'
 export const assets: { [key: string]: string } = {
     logo,
     gradientbg,
@@ -42,4 +45,7 @@ export const assets: { [key: string]: string } = {
     team2,
     team3,
     team4,
+
+    //investment
+    video,
 }

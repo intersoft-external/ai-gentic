@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import { X } from "lucide-react";
-import { RiMenu3Line } from "react-icons/ri";
-import { assets } from "../assets/assets.ts";
-
+import {useState, useEffect} from "react";
+import {X} from "lucide-react";
+import {RiMenu3Line} from "react-icons/ri";
+import {assets} from "../assets/assets.ts";
+import { Link } from "react-scroll";
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [showNav, setShowNav] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const navItems = ["Home", "About", "Portfolio", "Team", "Contact"];
+    const navItems = ["Home", "About", "Approach", "Portfolio", "Team", "Contact"];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,29 +38,65 @@ export default function Header() {
                 showNav ? "translate-y-0" : "-translate-y-full"
             } flex justify-between items-center py-4 px-4 lg:px-10 lg:py-3 bg-black/50 backdrop-blur-md`}
         >
-            <img className="h-14" src={assets.logo} alt="" />
+            {/*<img className="h-14" src={assets.logo} alt=""/>*/}
+            {/*logo*/}
+            <div className="flex items-center space-x-3 ">
+                <div className="relative">
+                    <img className={"rounded-md"} alt="AiGentic Group Logo"  width="48" height="24"
+                                               src={assets.logo}/></div>
+                <div className="flex flex-col">
+                    <span className="text-xl font-bold text-[#B69231]">
+                        AiGentic
+                    </span>
+                    <span className="text-xs text-brand-gray font-medium -mt-1">
+                        GROUP
+                    </span>
+                </div>
+            </div>
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-12">
-                {navItems.map((item, i) => (
-                    <a
-                        key={i}
-                        href="#"
-                        className="uppercase text-base tracking-wider transition-colors hover:text-gray-300 z-50"
+                {/*{navItems.map((item, i) => (*/}
+                {/*    <a*/}
+                {/*        key={i}*/}
+                {/*        href="#"*/}
+                {/*        className="uppercase text-base tracking-wider transition-colors hover:text-gray-300 z-50"*/}
+                {/*    >*/}
+                {/*        {item}*/}
+                {/*    </a>*/}
+                {/*))}*/}
+
+
+                {navItems.map((item) => (
+                    <Link
+                        key={item}
+                        to={item.toLowerCase()}
+                        smooth={true}
+                        duration={600}
+                        offset={-80}
+                        className="uppercase cursor-pointer text-base tracking-wider transition-colors hover:text-[#B69231] z-50"
                     >
                         {item}
-                    </a>
+                    </Link>
                 ))}
+
             </nav>
 
             {/* Desktop Button */}
-            <button className="hidden md:block py-2 px-6 rounded-full btn z-50">
+            <Link
+                to="contact"
+                smooth={true}
+                duration={600}
+                offset={-80}
+                className="hidden md:block py-2 px-6 rounded-full btn z-50 cursor-pointer"
+            >
                 Contact US
-            </button>
+            </Link>
+
 
             {/* Hamburger */}
             <button className="md:hidden z-50" onClick={() => setIsOpen(!isOpen)}>
-                <RiMenu3Line size={28} />
+                <RiMenu3Line size={28}/>
             </button>
 
             {/* Overlay (click to close) */}
@@ -83,7 +119,7 @@ export default function Header() {
                     className="absolute top-6 right-6 text-white hover:text-gray-300"
                     onClick={() => setIsOpen(false)}
                 >
-                    <X size={28} />
+                    <X size={28}/>
                 </button>
 
                 {/* Drawer Content */}
@@ -98,7 +134,17 @@ export default function Header() {
                             {item}
                         </a>
                     ))}
-                    <button className="btn py-3 px-10 rounded-full"> Contact US</button>
+                    <Link
+                        to="contact"
+                        smooth={true}
+                        duration={600}
+                        offset={-80}
+                        className="btn py-3 px-10 rounded-full cursor-pointer"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        Contact US
+                    </Link>
+
                 </div>
             </div>
         </header>
