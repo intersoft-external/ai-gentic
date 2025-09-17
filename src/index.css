@@ -153,38 +153,22 @@ body{
 .text{
     color:#F4F6F8;
 }
-/*button*/
+
+
+
 .btn {
-    background: linear-gradient(135deg, #B69231, #e6b345);
-    border: none;
+    background: linear-gradient(to right, #E7BE63, #B69231);
     color: black;
     font-weight: 500;
-    backdrop-filter: blur(4px);
-    transition: all 0.5s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 0 12px rgba(233, 155, 99, 0.6);
+    transition: all 0.3s ease;
 }
 
-/* Glassy Hover Effect */
-.btn::after {
-    content: "";
-    position: absolute;
-    top: -100%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.25);
-    transform: rotate(25deg);
-    transition: all 0.6s ease;
-    opacity: 0;
+.btn:hover {
+    box-shadow: 0 0 20px rgba(233, 155, 99, 0.9);
 }
 
-.btn:hover::after {
-    top: 0;
-    left: 0;
-    opacity: 1;
-}
 
 
 

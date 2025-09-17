@@ -98,21 +98,22 @@ export default function Footer({
                                 <label htmlFor="email" className="sr-only">
                                     Subscribe to updates
                                 </label>
-                                <div className="relative flex items-center">
+                                <div className="relative flex items-center w-full max-w-md">
                                     <input
                                         id="email"
                                         type="email"
                                         required
-                                        placeholder="Your work email"
-                                        className="w-full rounded-l-md border border-white/10 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-400/30"
+                                        placeholder="Enter your work email"
+                                        className="w-full rounded-l-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#e99b63]/40 transition"
                                     />
                                     <button
                                         type="submit"
-                                        className="btn px-6 py-2 rounded-r-md"
+                                        className=" rounded-r-xl btn"
                                     >
                                         Subscribe
                                     </button>
                                 </div>
+
                                 <p className="mt-2 text-xs text-white/60">
                                     Receive monthly AI-driven market briefs and product updates.
                                 </p>

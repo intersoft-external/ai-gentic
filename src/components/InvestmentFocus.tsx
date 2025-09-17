@@ -127,3 +127,5 @@ function InvestmentFocus() {
 }
 
 export default memo(InvestmentFocus);
+
+

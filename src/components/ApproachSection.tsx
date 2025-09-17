@@ -94,6 +94,7 @@ function ApproachSection() {
                             transition={{ duration: 0.6, ease: "easeOut" }}
                             className="relative group p-6 rounded-3xl bg-black/30 border border-white/10 shadow-lg hover:shadow-xl backdrop-blur-md hover:-translate-y-2 hover:scale-[1.03] transition-transform duration-500"
                         >
+
                             {/* Glow Layer */}
                             <div
                                 className={`absolute -inset-[1px] rounded-3xl bg-gradient-to-br ${item.gradient} opacity-40 blur-2xl group-hover:opacity-70 transition`}
