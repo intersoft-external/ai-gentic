@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Brain, BarChart3, TrendingUp } from "lucide-react";
 import { assets } from "../assets/assets";
 import { CiShare1 } from "react-icons/ci";
 import { Element } from "react-scroll";
-import {type JSX, memo} from "react";
+import { type JSX, memo } from "react";
 
 interface Company {
     name: string;
@@ -49,6 +49,16 @@ const highlights: Highlight[] = [
     { number: "Future", text: "Growth Potential", icon: <TrendingUp size={28} aria-hidden="true" /> },
 ];
 
+// Reusable motion variants for a premium staggered fade-slide
+const fadeUp:Variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (delay = 0) => ({
+        opacity: 1,
+        y: 0,
+        transition: { delay, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] },
+    }),
+};
+
 function PortfolioCompanies() {
     return (
         <Element name="portfolio">
@@ -60,10 +70,10 @@ function PortfolioCompanies() {
                     {/* Section Heading */}
                     <motion.div
                         className="text-center mb-20"
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
-                        viewport={{ once: true }}
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
                     >
                         <h2
                             id="portfolio-heading"
@@ -79,44 +89,53 @@ function PortfolioCompanies() {
 
                     {/* Cards Grid */}
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-50px" }}
                         variants={{
                             hidden: {},
-                            visible: { transition: { staggerChildren: 0.2 } },
+                            visible: {
+                                transition: { staggerChildren: 0.25 },
+                            },
                         }}
                     >
-                        {companies.map((c) => (
+                        {companies.map((c, i) => (
                             <motion.article
                                 key={c.name}
-                                variants={{
-                                    hidden: { opacity: 0, y: 40, scale: 0.95 },
-                                    visible: { opacity: 1, y: 0, scale: 1 },
+                                custom={i * 0.2}
+                                variants={fadeUp}
+                                whileHover={{
+                                    y: -8,
+                                    scale: 1.03,
+                                    boxShadow: "0 12px 30px rgba(182,146,49,0.15)",
                                 }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
-                                whileHover={{ y: -10, scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="bg-[#111] rounded-2xl border border-gray-800 hover:border-[#B69231] hover:shadow-sm hover:shadow-[#e6b345] transition-all duration-300 flex flex-col"
+                                className="bg-[#111] rounded-2xl border border-gray-800 hover:border-[#B69231] transition-all duration-500 flex flex-col"
                             >
                                 {/* Image */}
-                                <div className="w-full h-40 overflow-hidden rounded-t-2xl">
+                                <div className="w-full h-40 overflow-hidden rounded-t-2xl relative">
                                     <motion.img
                                         src={c.image}
                                         alt={c.name}
                                         className="w-full h-full object-cover"
-                                        whileHover={{ scale: 1.05 }}
-                                        transition={{ duration: 0.4 }}
+                                        whileHover={{ scale: 1.08 }}
+                                        transition={{ duration: 0.6, ease: "easeOut" }}
                                         loading="lazy"
+                                    />
+                                    <motion.div
+                                        className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"
+                                        initial={{ opacity: 0 }}
+                                        whileHover={{ opacity: 1 }}
+                                        transition={{ duration: 0.4 }}
                                     />
                                 </div>
 
                                 {/* Content */}
                                 <div className="p-6 flex flex-col flex-grow">
-                                    <span className="text-xs uppercase text-[#B69231] tracking-wider mb-2">
-                                        {c.tag}
-                                    </span>
+                  <span className="text-xs uppercase text-[#B69231] tracking-wider mb-2">
+                    {c.tag}
+                  </span>
                                     <h3 className="text-xl font-semibold mb-3">{c.name}</h3>
                                     <p className="text-sm text-gray-300 flex-grow break-words">
                                         {c.desc}
@@ -131,10 +150,10 @@ function PortfolioCompanies() {
                                             {c.focus.map((f) => (
                                                 <span
                                                     key={f}
-                                                    className="text-xs px-3 py-1 rounded-full bg-purple-[#E7BE63] text border border-[#B69231]"
+                                                    className="text-xs px-3 py-1 rounded-full bg-[#1a1a1a] border border-[#B69231] text-[#E7BE63] shadow-sm"
                                                 >
-                                                    {f}
-                                                </span>
+                          {f}
+                        </span>
                                             ))}
                                         </div>
                                     </div>
@@ -143,9 +162,10 @@ function PortfolioCompanies() {
                                     <div className="mt-6">
                                         <motion.button
                                             className="text-[#B69231] flex items-center gap-2 cursor-pointer"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
+                                            whileHover={{ scale: 1.08, x: 3 }}
+                                            whileTap={{ scale: 0.96 }}
                                             aria-label={`Learn more about ${c.name}`}
+                                            transition={{ type: "spring", stiffness: 250 }}
                                         >
                                             Learn More
                                             <CiShare1 aria-hidden="true" />
@@ -157,18 +177,35 @@ function PortfolioCompanies() {
                     </motion.div>
 
                     {/* Bottom Highlights */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-                        {highlights.map((h) => (
-                            <div
+                    <motion.div
+                        className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={{
+                            hidden: {},
+                            visible: { transition: { staggerChildren: 0.2 } },
+                        }}
+                    >
+                        {highlights.map((h, i) => (
+                            <motion.div
                                 key={h.text}
-                                className="bg-[#111] p-8 rounded-2xl border border-gray-800 hover:border-[#B69231] hover:shadow-sm hover:shadow-[#e6b345] transition-all duration-300 flex flex-col items-center"
+                                custom={i * 0.15}
+                                variants={fadeUp}
+                                whileHover={{
+                                    y: -6,
+                                    scale: 1.05,
+                                    boxShadow: "0 8px 24px rgba(182,146,49,0.2)",
+                                }}
+                                transition={{ type: "spring", stiffness: 220 }}
+                                className="p-8 rounded-2xl border border-gray-800 hover:border-[#B69231] transition-all duration-500 flex flex-col items-center"
                             >
                                 <div className="mb-4 p-3 rounded-xl icon">{h.icon}</div>
                                 <h3 className="text-3xl font-bold mb-2">{h.number}</h3>
-                                <p className="text text-sm">{h.text}</p>
-                            </div>
+                                <p className="text text-sm text-gray-300">{h.text}</p>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </Element>

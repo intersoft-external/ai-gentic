@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { Element } from "react-scroll";
 
@@ -7,7 +5,7 @@ export default function Contact() {
     return (
         <Element name="contact">
             <section
-                className="relative w-full min-h-screen bg-black text-white py-20 px-6 lg:px-28"
+                className="relative w-full  bg-black text-white py-16 px-6 lg:px-28"
                 aria-labelledby="contact-heading"
             >
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

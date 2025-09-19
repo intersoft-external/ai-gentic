@@ -1,13 +1,8 @@
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "./ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { assets } from "../assets/assets";
 import { motion } from "framer-motion";
 import { Element } from "react-scroll";
-import {type FC, memo } from "react";
+import { type FC, memo } from "react";
 
 const About: FC = () => {
     const accordionItems = [
@@ -41,29 +36,24 @@ const About: FC = () => {
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2
-                            id="about-heading"
-                            className="text-3xl md:text-4xl lg:text-5xl heading"
-                        >
+                        <h2 id="about-heading" className="text-3xl md:text-4xl lg:text-5xl heading">
                             About{" "}
                             <span className="gradient-text relative">
                 AiGentic Group
-                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-gradient-to-r from-[#B69231] via-[#171717] to-[#e6b345] rounded-full animate-pulse"></span>
+                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-gradient-to-r from-[#B69231] via-[#171717] to-[#e6b345] rounded-full animate-pulse" />
               </span>
                         </h2>
 
                         <p className="text-gray-300 text-lg leading-relaxed">
-                            <strong>AiGentic Group</strong> is a holding company specialising
-                            in <strong>AI-powered financial technology</strong> and media
-                            brands. We develop companies that leverage{" "}
-                            <strong>artificial intelligence</strong> to transform how
-                            financial markets operate and communicate.
+                            <strong>AiGentic Group</strong> is a holding company specialising in{" "}
+                            <strong>AI-powered financial technology</strong> and media brands. We develop companies
+                            that leverage <strong>artificial intelligence</strong> to transform how financial markets operate
+                            and communicate.
                         </p>
 
                         <p className="text-gray-400 text-base md:text-lg leading-relaxed">
-                            Our focus is on building a portfolio of synergistic brands that
-                            collectively create superior value in the{" "}
-                            <strong>capital markets ecosystem</strong>.
+                            Our focus is on building a portfolio of synergistic brands that collectively create
+                            superior value in the <strong>capital markets ecosystem</strong>.
                         </p>
 
                         {/* Accordion */}
@@ -72,11 +62,9 @@ const About: FC = () => {
                                 <AccordionItem key={i} value={`item-${i}`}>
                                     <AccordionTrigger className="text-lg font-medium !no-underline hover:text-indigo-400 transition-colors relative group">
                                         {item.title}
-                                        <span className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-indigo-400/0 via-purple-500/60 to-pink-500/0 scale-x-0 group-hover:scale-x-100 origin-center transition-transform"></span>
+                                        <span className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-indigo-400/0 via-purple-500/60 to-pink-500/0 scale-x-0 group-hover:scale-x-100 origin-center transition-transform" />
                                     </AccordionTrigger>
-                                    <AccordionContent className="text-gray-400 leading-relaxed">
-                                        {item.desc}
-                                    </AccordionContent>
+                                    <AccordionContent className="text-gray-400 leading-relaxed">{item.desc}</AccordionContent>
                                 </AccordionItem>
                             ))}
                         </Accordion>
@@ -91,12 +79,14 @@ const About: FC = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
                         <div className="relative w-full max-w-md mx-auto lg:mx-0">
-                            {/* glow border */}
-                            <div className="absolute -bottom-6 -right-6 w-[95%] h-[95%] rounded-2xl bg-gradient-to-r from-[#e6b345] to-[#B69231] shadow-lg"></div>
+                            {/* Glow border */}
+                            <div className="absolute -bottom-6 -right-6 w-[95%] h-[95%] rounded-2xl bg-gradient-to-r from-[#e6b345] to-[#B69231] shadow-lg" />
 
                             {/* Main image */}
                             <img
                                 src={assets.about}
+                                width={600}
+                                height={400}
                                 alt="About AiGentic Group - AI-powered financial technology"
                                 loading="lazy"
                                 decoding="async"
