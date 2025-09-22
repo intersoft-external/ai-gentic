@@ -1,7 +1,7 @@
 import logo from './logo/logo.webp'
 import gradientbg from './gradient.webp'
 import about from "./About/about.webp"
-import chatbot from './hero/chatbot.gif'
+import chatbot from './hero/chatbot.png'
 
 import partner1 from "./partners/clear_choice.png"
 import partner2 from "./partners/drucker_logo.png"

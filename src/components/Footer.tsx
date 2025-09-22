@@ -55,12 +55,9 @@ export default function Footer({
                                 </div>
                             </div>
 
-                            <p className="mt-1 text-sm text-white/70 max-w-sm">
+                            <p className="mt-2 text-sm text-white/70 max-w-sm">
                                 Investment holding company focused on AI-powered financial technology and media brands.
                             </p>
-
-
-                            {/* Newsletter Form */}
 
                         </motion.div>
 
@@ -94,7 +91,6 @@ export default function Footer({
                                 </ul>
                             </div>
                         </motion.nav>
-
                     </div>
 
                     {/* Bottom Bar */}
@@ -106,9 +102,9 @@ export default function Footer({
                         variants={itemVariants}
                     >
                         <div className="flex items-center gap-4 text-sm text-white/75 flex-wrap">
-              <span className="flex items-center gap-2">
-                <AiOutlineCopyright/> {year} {companyName}. All rights reserved.
-              </span>
+                            <span className="flex items-center gap-2">
+                                <AiOutlineCopyright/> {year} {companyName}. All rights reserved.
+                            </span>
                             <a href="#" className="text-xs hover:text-white">Privacy</a>
                             <a href="#" className="text-xs hover:text-white">Terms</a>
                         </div>

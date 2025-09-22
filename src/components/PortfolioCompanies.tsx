@@ -2,7 +2,6 @@ import { motion, type Variants } from "framer-motion";
 import { Brain, BarChart3, TrendingUp } from "lucide-react";
 import { assets } from "../assets/assets";
 import { CiShare1 } from "react-icons/ci";
-import { Element } from "react-scroll";
 import { type JSX, memo } from "react";
 
 interface Company {
@@ -49,7 +48,6 @@ const highlights: Highlight[] = [
     { number: "Future", text: "Growth Potential", icon: <TrendingUp size={28} aria-hidden="true" /> },
 ];
 
-// Reusable motion variants for a premium staggered fade-slide
 const fadeUp:Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: (delay = 0) => ({
@@ -61,8 +59,8 @@ const fadeUp:Variants = {
 
 function PortfolioCompanies() {
     return (
-        <Element name="portfolio">
             <section
+                id="portfolio"
                 className="w-full bg-black text-white py-16 md:py-24 px-6 lg:px-28"
                 aria-labelledby="portfolio-heading"
             >
@@ -208,7 +206,6 @@ function PortfolioCompanies() {
                     </motion.div>
                 </div>
             </section>
-        </Element>
     );
 }
 

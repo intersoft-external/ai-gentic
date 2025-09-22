@@ -1,6 +1,5 @@
 import { ChartBar, Users, Globe, Lightbulb } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
-import { Element } from "react-scroll";
 import { type ReactNode, memo } from "react";
 
 import gradientbg from "../assets/gradient.webp";
@@ -57,8 +56,8 @@ const cardVariants: Variants = {
 
 function ApproachSection() {
     return (
-        <Element name="approach">
             <section
+                id="approach"
                 className="relative w-full text-white py-24 px-6 lg:px-12 overflow-hidden"
                 aria-labelledby="approach-heading"
             >
@@ -145,7 +144,6 @@ function ApproachSection() {
                     aria-hidden="true"
                 />
             </section>
-        </Element>
     );
 }
 

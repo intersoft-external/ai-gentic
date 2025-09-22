@@ -2,8 +2,8 @@ import { memo, lazy, Suspense } from "react";
 import { useInView } from "react-intersection-observer";
 import { Gem } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
-import { Link } from "react-scroll";
 import { assets } from "../assets/assets.ts";
+import * as React from "react";
 
 // Lazy-load Spline only when in view
 const Spline = lazy(() => import("@splinetool/react-spline"));
@@ -18,11 +18,22 @@ const fadeUp: Variants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
+    e.preventDefault();
+    const section = document.getElementById(id);
+    if (section) {
+        window.scrollTo({
+            top: section.offsetTop - 80,
+            behavior: "smooth",
+        });
+    }
+};
+
 const Hero = () => {
     // detect when the Hero section is in view
     const { ref: heroRef, inView } = useInView({
         triggerOnce: true,
-        rootMargin: "200px", // start loading before it’s visible
+        rootMargin: "200px",
     });
 
     return (
@@ -82,10 +93,8 @@ const Hero = () => {
                         className="mt-5 flex flex-col sm:flex-row gap-3 w-full"
                         variants={fadeUp}
                     >
-                        <Link
-                            to="portfolio"
-                            smooth
-                            duration={600}
+                        <a
+                            href="portfolio"
                             className="cursor-pointer flex justify-center items-center rounded-full font-medium hover:opacity-90 transition-all duration-300 shadow-lg w-full sm:w-auto"
                             style={{
                                 fontSize: "clamp(0.7rem, 2vw, 1rem)",
@@ -93,22 +102,22 @@ const Hero = () => {
                                 background: "linear-gradient(to right, #e99b63, #a7a7a7)",
                                 color: "#000",
                             }}
+                            onClick={(e) => handleLinkClick(e, "portfolio")}
                         >
                             Explore Our Portfolio
-                        </Link>
+                        </a>
 
-                        <Link
-                            to="about"
-                            smooth
-                            duration={600}
+                        <a
+                            href="about"
                             className="cursor-pointer flex justify-center items-center border border-gray-400 text-white rounded-full font-medium hover:bg-white/10 transition-all duration-300 w-full sm:w-auto"
                             style={{
                                 fontSize: "clamp(0.7rem, 2vw, 1rem)",
                                 padding: "clamp(0.4rem, 1vw, 0.75rem) clamp(0.8rem, 3vw, 1.5rem)",
                             }}
+                            onClick={(e) => handleLinkClick(e, "about")}
                         >
                             Learn More
-                        </Link>
+                        </a>
                     </motion.div>
                 </div>
 
@@ -151,11 +160,10 @@ const Hero = () => {
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#e99b63] to-[#b88a4a] flex items-center justify-center shadow-md">
                     <img
                         src={assets.chatbot}
-                        alt="AI Chatbot"
+                        alt="AI-Driven Financial Services"
                         width={150}
                         height={150}
                         className="w-12 h-12 object-cover rounded-full"
-                        loading="lazy"
                     />
                 </div>
 

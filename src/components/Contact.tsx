@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import { Element } from "react-scroll";
 
 export default function Contact() {
     return (
-        <Element name="contact">
             <section
+                id={"contact"}
                 className="relative w-full  bg-black text-white py-16 px-6 lg:px-28"
                 aria-labelledby="contact-heading"
             >
@@ -133,6 +132,5 @@ export default function Contact() {
                 {/* Background Gradient */}
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black via-transparent to-[#e99b63] opacity-40 pointer-events-none"></div>
             </section>
-        </Element>
     );
 }

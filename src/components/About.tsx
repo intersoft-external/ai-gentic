@@ -1,7 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { assets } from "../assets/assets";
 import { motion } from "framer-motion";
-import { Element } from "react-scroll";
 import { type FC, memo } from "react";
 
 const About: FC = () => {
@@ -21,7 +20,6 @@ const About: FC = () => {
     ];
 
     return (
-        <Element name="about">
             <section
                 id="about"
                 className="relative w-full text-white py-16 md:py-24 px-6 lg:px-12 overflow-hidden"
@@ -85,18 +83,16 @@ const About: FC = () => {
                             {/* Main image */}
                             <img
                                 src={assets.about}
-                                width={600}
-                                height={400}
                                 alt="About AiGentic Group - AI-powered financial technology"
                                 loading="lazy"
                                 decoding="async"
+                                // Added w-full and removed fixed width and height
                                 className="relative z-10 w-full rounded-2xl shadow-[0_0_40px_rgba(139,92,246,0.3)]"
                             />
                         </div>
                     </motion.div>
                 </div>
             </section>
-        </Element>
     );
 };
 

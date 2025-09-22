@@ -1,9 +1,6 @@
-"use client";
-
 import { useState, memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { Element } from "react-scroll";
 import { motion } from "framer-motion";
 
 import { assets } from "../assets/assets";
@@ -31,8 +28,7 @@ function OurTeam() {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     return (
-        <Element name="team">
-            <section className="w-full bg-black text-white py-20 px-6 lg:px-28 relative" aria-labelledby="team-heading">
+            <section id={"team"} className="w-full bg-black text-white py-20 px-6 lg:px-28 relative" aria-labelledby="team-heading">
                 <div className="relative max-w-7xl mx-auto">
 
                     {/* Header */}
@@ -141,7 +137,6 @@ function OurTeam() {
                     </button>
                 </div>
             </section>
-        </Element>
     );
 }
 
