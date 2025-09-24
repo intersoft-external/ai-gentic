@@ -82,7 +82,7 @@ export default function Header() {
 
                 {/* Desktop CTA */}
                 <a
-                    href="contact"
+                    href="/contact"
                     className="hide-desktop hidden md:block py-2 px-6 rounded-full btn cursor-pointer"
                     onClick={(e) => handleLinkClick(e, "contact")}
                 >
@@ -135,7 +135,7 @@ export default function Header() {
                         </a>
                     ))}
                     <a
-                        href="contact"
+                        href="/contact"
                         className="btn py-3 px-10 rounded-full cursor-pointer"
                         onClick={(e) => handleLinkClick(e, "contact")}
                     >

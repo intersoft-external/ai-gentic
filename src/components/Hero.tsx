@@ -1,7 +1,7 @@
 import { memo, lazy, Suspense } from "react";
 import { useInView } from "react-intersection-observer";
 import { Gem } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, stagger } from "framer-motion";
 import { assets } from "../assets/assets.ts";
 import * as React from "react";
 
@@ -10,7 +10,12 @@ const Spline = lazy(() => import("@splinetool/react-spline"));
 
 const containerVariants: Variants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+    visible: {
+        opacity: 1,
+        transition: {
+            delayChildren: stagger(0.15),
+        },
+    },
 };
 
 const fadeUp: Variants = {
@@ -84,8 +89,6 @@ const Hero = () => {
                         variants={fadeUp}
                     >
                         Creating a portfolio of AI-powered companies that revolutionise financial content, market intelligence, and capital markets technology.
-
-
                     </motion.h2>
 
                     {/* Buttons */}
@@ -94,7 +97,7 @@ const Hero = () => {
                         variants={fadeUp}
                     >
                         <a
-                            href="portfolio"
+                            href="/portfolio"
                             className="cursor-pointer flex justify-center items-center rounded-full font-medium hover:opacity-90 transition-all duration-300 shadow-lg w-full sm:w-auto"
                             style={{
                                 fontSize: "clamp(0.7rem, 2vw, 1rem)",
@@ -108,7 +111,7 @@ const Hero = () => {
                         </a>
 
                         <a
-                            href="about"
+                            href="/about"
                             className="cursor-pointer flex justify-center items-center border border-gray-400 text-white rounded-full font-medium hover:bg-white/10 transition-all duration-300 w-full sm:w-auto"
                             style={{
                                 fontSize: "clamp(0.7rem, 2vw, 1rem)",
@@ -116,8 +119,9 @@ const Hero = () => {
                             }}
                             onClick={(e) => handleLinkClick(e, "about")}
                         >
-                            Learn More
+                            Learn More <span className="sr-only">about our company</span>
                         </a>
+
                     </motion.div>
                 </div>
 

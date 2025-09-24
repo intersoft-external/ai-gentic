@@ -1,6 +1,6 @@
 import { Newspaper, BarChart3, Layers } from "lucide-react";
 import { assets } from "../assets/assets";
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, stagger  } from "framer-motion";
 import { memo, type ReactNode } from "react";
 
 interface FocusItem {
@@ -16,8 +16,13 @@ const focuses: FocusItem[] = [
 ];
 
 const containerVariants: Variants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.15 } },
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            delayChildren: stagger(0.15),
+        },
+    },
 };
 
 const itemVariants: Variants = {
